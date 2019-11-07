@@ -1,12 +1,13 @@
-import createStateContext from '../Base/state';
+import createStateContext from 'react-context-simply';
 import timeReducer from './reducers';
 import { useInterval } from './middlewares';
+import * as actions from './actions'
 
 const {
     useStateValue,
     StateProvider,
     StateContext
-} = createStateContext(timeReducer, {time: Date.now(), isOn: false}, useInterval);
+} = createStateContext({time: Date.now(), isOn: false}, timeReducer, actions, useInterval);
 
 const useTimeState = useStateValue;
 const TimeState = StateProvider;

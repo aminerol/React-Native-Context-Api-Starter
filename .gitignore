@@ -14,7 +14,4 @@ web-report/
 .DS_Store
 
 \.expo-shared/
-
-Components/Todo/
-
-Context/Todo/
+package-lock\.json

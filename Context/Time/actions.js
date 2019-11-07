@@ -1,8 +1,4 @@
 import { SET_TIME, TOGGLE_TIME } from "./constants";
 
-export default function createActions(dispatch) {
-  return {
-    setTime: (time) => dispatch({ type: SET_TIME, payload: time, }),
-    toggleTime: (toggle) => dispatch({ type: TOGGLE_TIME, payload: toggle }),
-  };
-}
+export const setTime = (time) => ({ type: SET_TIME, payload: time });
+export const toggleTime = (toggle) => ({ type: TOGGLE_TIME, payload: toggle });

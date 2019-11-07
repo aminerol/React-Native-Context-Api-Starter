@@ -5,10 +5,11 @@ import styles from '../../Styles'
 
 export default function Time() {
     const [{ time, isOn }, actions] = useTimeState()
+    const {toggleTime} = actions
     return (
       <View style={{flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
           <TouchableOpacity onPress={()=>{
-            actions.toggleTime(!isOn)
+            toggleTime(!isOn)
           }}>
             <Text style={styles.paragraph}>{isOn ? 'Stop' : 'Start'}</Text>
           </TouchableOpacity>
