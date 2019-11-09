@@ -1,23 +1,39 @@
-import { ADD_TODO, RESET_TODO_STATE, GET_TODOS } from './constants'
-import DUMMY_TODOS from './data'
-
+import { ADD_TODO, RESET_TODO_STATE, TODO_SUCESS, TODO_FAIL, TODO_LOADING } from './constants'
 
 export default function todoReducer(state, action) {
+    console.log('REDUCER ', action.type) 
     switch (action.type) {
         case ADD_TODO:
-            const newState = [
+            return {
+                todos: [
+                    ...state.todos,
+                    action.payload
+                ]
+            }
+        case TODO_SUCESS:
+            return {
+                todos: [
+                    ...state.todos,
+                    ...action.payload
+                ],
+                loading: action.loading
+            }
+        case TODO_FAIL:
+            return {
                 ...state,
-                action.payload
-            ];
-            return newState
-        case GET_TODOS:
-            return [
+                loading: action.loading,
+                error: action.error
+            }
+        case TODO_LOADING:
+            return {
                 ...state,
-                ...action.payload
-            ]
-
+                loading: action.loading
+            }
         case RESET_TODO_STATE:
-            return DUMMY_TODOS;
+            return {
+                ...state,
+                todos: []
+            }
 
         default:
             return state;
